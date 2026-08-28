@@ -448,46 +448,6 @@ body.splash-done .splash {
   transform: rotate(-2deg);
 }
 
-.hero-id {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 22px;
-}
-
-.hero-avatar {
-  flex: 0 0 auto;
-  width: 64px;
-  height: 64px;
-  border-radius: 18px 18px 6px 18px;
-  background: var(--lime);
-  box-shadow: 4px 4px 0 var(--ink);
-}
-
-.hero-id .eyebrow {
-  margin: 0 0 8px;
-}
-
-.hero-id h1 {
-  font-size: clamp(2.1rem, 4.6vw, 3.4rem);
-  line-height: 0.98;
-}
-
-@media (max-width: 760px) {
-  .hero-id {
-    gap: 13px;
-  }
-
-  .hero-avatar {
-    width: 54px;
-    height: 54px;
-  }
-
-  .hero-id h1 {
-    font-size: clamp(1.9rem, 8.5vw, 2.6rem);
-  }
-}
-
 .hero-lede {
   max-width: 690px;
   margin: 28px 0 0;
