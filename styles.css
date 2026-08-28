@@ -125,16 +125,11 @@ body.splash-done .splash {
 }
 
 .splash-mark {
-  display: grid;
-  place-items: center;
+  display: block;
   width: 76px;
   height: 76px;
   border-radius: 20px 20px 8px 20px;
-  color: var(--ink);
   background: var(--lime);
-  font-family: var(--serif);
-  font-size: 1.9rem;
-  font-weight: 700;
   box-shadow: 6px 6px 0 var(--ink);
   animation: splash-pop 600ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
@@ -451,6 +446,46 @@ body.splash-done .splash {
   background: var(--lime);
   content: '';
   transform: rotate(-2deg);
+}
+
+.hero-id {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.hero-avatar {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px 18px 6px 18px;
+  background: var(--lime);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.hero-id .eyebrow {
+  margin: 0 0 8px;
+}
+
+.hero-id h1 {
+  font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+  line-height: 0.98;
+}
+
+@media (max-width: 760px) {
+  .hero-id {
+    gap: 13px;
+  }
+
+  .hero-avatar {
+    width: 54px;
+    height: 54px;
+  }
+
+  .hero-id h1 {
+    font-size: clamp(1.9rem, 8.5vw, 2.6rem);
+  }
 }
 
 .hero-lede {
