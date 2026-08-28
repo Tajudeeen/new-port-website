@@ -5,6 +5,9 @@
 (function () {
   'use strict';
 
+  // Mark JS as available so the splash only traps users who can run JS.
+  document.documentElement.classList.remove('no-js');
+
   var $ = function (sel, ctx) {
     return (ctx || document).querySelector(sel);
   };
@@ -63,6 +66,31 @@
     { passive: true },
   );
   onScroll();
+
+  /* ── Splash: ~3s, then reveal the page. Falls back safely if blocked. ── */
+  var splash = $('#splash');
+  if (splash) {
+    var dismiss = function () {
+      document.body.classList.add('splash-done');
+      try {
+        sessionStorage.setItem('splashSeen', '1');
+      } catch (e) {}
+    };
+
+    // Don't replay the splash on internal navigations within a session.
+    var seen;
+    try {
+      seen = sessionStorage.getItem('splashSeen') === '1';
+    } catch (e) {
+      seen = false;
+    }
+    if (seen) {
+      dismiss();
+    } else {
+      // Bar fills over 2.7s; dismiss shortly after, ~3s total.
+      window.setTimeout(dismiss, 3000);
+    }
+  }
 
   /* ── Active nav link ── */
   var sections = $$('main section[id]');

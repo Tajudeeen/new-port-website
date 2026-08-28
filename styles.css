@@ -103,6 +103,109 @@ code {
   left: 16px;
 }
 
+/* ══════════ SPLASH (3s) ══════════ */
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 18px;
+  background: var(--paper);
+  transition:
+    opacity 420ms ease,
+    visibility 0s linear 420ms;
+}
+
+body.splash-done .splash {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.splash-mark {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  border-radius: 20px 20px 8px 20px;
+  color: var(--ink);
+  background: var(--lime);
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  font-weight: 700;
+  box-shadow: 6px 6px 0 var(--ink);
+  animation: splash-pop 600ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes splash-pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.splash-name {
+  color: #3f443c;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  animation: splash-fade 600ms ease 220ms both;
+}
+
+.splash-bar {
+  overflow: hidden;
+  width: 132px;
+  height: 4px;
+  border-radius: 999px;
+  background: #e4e1d6;
+}
+
+.splash-bar > i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--lime-deep);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: splash-fill 2.7s ease forwards;
+}
+
+@keyframes splash-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes splash-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* JS-off / reduced-motion: never trap the page behind the splash */
+.no-js .splash,
+.splash[hidden] {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash {
+    display: none !important;
+  }
+}
+
 .scroll-rail {
   position: fixed;
   inset: 0 auto auto 0;
@@ -892,6 +995,87 @@ code {
 .stack-card h3 {
   margin: 0 0 16px;
   font-size: 1.4rem;
+}
+
+/* ══════════ FLUTTER JOURNEY ══════════ */
+.flutter-section {
+  padding-block: 86px;
+}
+
+.flutter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.flutter-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.flutter-card:hover {
+  border-color: #b7b3a6;
+  box-shadow: var(--shadow);
+  transform: translateY(-3px);
+}
+
+.flutter-card-wide {
+  grid-column: 1 / -1;
+}
+
+.flutter-card-head {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.flutter-avatar {
+  display: grid;
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid #c6d187;
+  border-radius: 15px 15px 5px 15px;
+  background: linear-gradient(145deg, #f2ffad, var(--lime));
+  font-family: var(--serif);
+  font-size: 1.04rem;
+  font-weight: 700;
+}
+
+.flutter-card-head h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.flutter-card-head small {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.flutter-card p {
+  margin: 0;
+  color: #555a51;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.flutter-card a {
+  margin-top: auto;
 }
 
 /* ══════════ TIMELINE ══════════ */
